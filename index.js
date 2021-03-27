@@ -11,11 +11,7 @@ function createEmployeeRecord(array) {
 }
 
 function createEmployeeRecords(array) {
-    let recordArray = []
-    array.forEach(a => {
-        recordArray.push(createEmployeeRecord(a))
-    });
-    return recordArray
+    return array.map(a => createEmployeeRecord(a))
 }
 
 function createTimeInEvent(record, dateStamp) {
@@ -55,9 +51,7 @@ function wagesEarnedOnDate(record, dateStamp) {
 }
 
 function allWagesFor(record) {
-    let dates = record.timeInEvents.map(function(x){
-        return x.date
-    })
+    let dates = record.timeInEvents.map( x => x.date)
 
     let pay = dates.reduce(function(total, element){
         return total = total + wagesEarnedOnDate(record, element)
